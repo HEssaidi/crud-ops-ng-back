@@ -7,6 +7,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ServerService {
@@ -20,7 +21,13 @@ public class ServerService {
     public Server findServer (String ipAddress,String name){
         return serverRepo.findByIpAddressAndName(ipAddress,name);
     }
+    public Optional<Server> findServerById (Long id){
+        return serverRepo.findById(id);
+    }
     public List<Server> getServers (){
         return serverRepo.findAll(PageRequest.of(0,3)).toList();
+    }
+    public String welcome(){
+        return "Welcome !!!!!!!!!!!!!";
     }
 }
